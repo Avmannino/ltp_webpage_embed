@@ -4,7 +4,7 @@
 import logo from "../assets/wingslogo.png";
 
 // ✅ Hero video should be served from /public/videos for GH Pages reliability
-// Put the file here: public/videos/learn-to-skate-hero.mp4
+// Put the file here: public/videos/learn-to-play-hero.mp4
 import { VideoHero } from "@/app/components/VideoHero";
 import { InfoBox } from "@/app/components/InfoBox";
 import { PriceCard } from "@/app/components/PriceCard";
@@ -143,7 +143,7 @@ export default function App() {
                     min-[1001px]:max-[1325px]:pl-[28px]
                   "
                 >
-                  March 13th - June 13th
+                  March 14th - June 13th
                 </p>
 
                 <div className="mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
@@ -193,7 +193,7 @@ export default function App() {
                       w-full max-w-[320px] sm:w-auto
                     `}
                   >
-                    Register for Spring Learn to Skate
+                    Register for Spring Learn to Play
                   </a>
                 </div>
               </div>
@@ -308,7 +308,7 @@ export default function App() {
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
           <p className="text-center text-gray-200 mb-6 font-semibold">
-            Learn To Skate Spring 2026
+            Learn To Play Spring 2026
           </p>
 
           <div className="flex justify-center w-full">
@@ -326,7 +326,7 @@ export default function App() {
                 <PriceCard
                   title="Fridays"
                   price="$490"
-                  description="Spring Learn to Skate"
+                  description="Spring Learn to Play"
                   features={["3:15 PM – 4:00 PM"]}
                 />
               </div>
@@ -335,7 +335,7 @@ export default function App() {
                 <PriceCard
                   title="Saturdays"
                   price="$490"
-                  description="Spring Learn to Skate"
+                  description="Spring Learn to Play"
                   features={["1:20 PM – 2:05 PM"]}
                 />
               </div>
@@ -401,7 +401,7 @@ export default function App() {
 
                 <p className="text-white leading-relaxed">
                   Use the QR code or click the link below to register for Spring Learn
-                  to Skate.
+                  to Play.
                 </p>
 
                 <img
@@ -457,7 +457,7 @@ export default function App() {
               <Accordion type="single" collapsible className="bg-transparent px-4 sm:px-6">
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-white">
-                    Who is Learn to Skate for?
+                    Who is Learn to Play for?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
                     It’s designed for beginner skaters (kids ages 3–8) and focuses on
@@ -479,8 +479,8 @@ export default function App() {
                     When are classes?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring Learn to Skate runs March 13 – June 13, 2026 with options on
-                    Mondays (Preschoolers), Fridays, or Saturdays. See the Schedule section above for
+                    Spring Learn to Play runs March 14 – June 13, 2026 with options on
+                    Mondays or Saturdays. See the Schedule section above for
                     exact dates and times.
                   </AccordionContent>
                 </AccordionItem>

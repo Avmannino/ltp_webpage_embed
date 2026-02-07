@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
   // ✅ IMPORTANT for GitHub Pages project sites:
   // https://<user>.github.io/<repo>/
-  base: "/lts_webpage_embed/",
+  base: "/ltp_webpage_embed/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
