@@ -3,9 +3,9 @@
 // ✅ Branding
 import logo from "../assets/wingslogo.png";
 
-// ✅ Hero video should be served from /public/videos for GH Pages reliability
-// Put the file here: public/videos/learn-to-play-hero.mp4
-import { VideoHero } from "@/app/components/VideoHero";
+// ✅ Hero carousel (replace VideoHero)
+import { HeroCarousel } from "@/app/components/HeroCarousel";
+
 import { InfoBox } from "@/app/components/InfoBox";
 import { PriceCard } from "@/app/components/PriceCard";
 import { ScheduleTable } from "@/app/components/ScheduleTable";
@@ -18,36 +18,35 @@ import {
 } from "@/app/components/ui/accordion";
 
 import allAgesIcon from "../assets/icons/icons8-birth-date-100.png";
-import practiceIcon from "../assets/icons/icons8-practice-64.png";
+import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
-import qrCode from "../assets/Registration_QR.png";
+import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
+import qrCode from "../assets/Registration_QR.avif";
 
-// ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
-// ✅ CHANGE: make the URL ABSOLUTE (origin + base) + cache-buster.
-// Bump v= whenever you re-upload/re-encode.
-const HERO_VIDEO_SRC =
-  typeof window !== "undefined"
-    ? `${window.location.origin}${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=4`
-    : `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=4`;
+// ✅ HERO IMAGES (add these files to your repo)
+import hero1 from "../assets/hero/hero-1.jpg";
+import hero2 from "../assets/hero/hero-2.jpg";
+import hero3 from "../assets/hero/hero-3.jpg";
+import hero4 from "../assets/hero/hero-4.jpg";
 
 export default function App() {
   // ✅ Reusable shadow token
   const SHADOW = "shadow-[0_8px_20px_rgba(0,0,0,0.45)]";
 
   // ✅ Colors (kept from your design)
-  const PAGE_BG = "bg-[#305774]";
-  const CARD_OVERLAY = "bg-[#00335e]/85";
+  const PAGE_BG = "bg-[#013763]";
+  const CARD_OVERLAY = "bg-[#365750]/85";
 
   // ✅ LINKS (from the site)
-  const SPRING_LTS_REG_URL =
-    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995941";
+  const SPRING_LTP_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995937";
 
-  // ✅ Spring 2026 schedule (from EZFacility registration page)
+  // ✅ Spring 2026 schedule (from your Learn to Play screenshot)
   const SPRING_SCHEDULE = [
     {
-      label: "Mondays (Preschoolers)",
-      price: "$425",
-      time: "1:20 PM – 2:05 PM",
+      label: "Mondays",
+      price: "$550",
+      time: "3:40 PM – 4:40 PM",
       dates: [
         "Mar 16, 2026",
         "Mar 23, 2026",
@@ -64,28 +63,9 @@ export default function App() {
       ],
     },
     {
-      label: "Fridays",
-      price: "$490",
-      time: "3:15 PM – 4:00 PM",
-      dates: [
-        "Mar 13, 2026",
-        "Mar 20, 2026",
-        "Mar 27, 2026",
-        "Apr 10, 2026",
-        "Apr 17, 2026",
-        "Apr 24, 2026",
-        "May 1, 2026",
-        "May 8, 2026",
-        "May 15, 2026",
-        "May 29, 2026",
-        "Jun 5, 2026",
-        "Jun 12, 2026",
-      ],
-    },
-    {
       label: "Saturdays",
-      price: "$490",
-      time: "1:20 PM – 2:05 PM",
+      price: "$550",
+      time: "12:20 PM – 1:20 PM",
       dates: [
         "Mar 14, 2026",
         "Mar 21, 2026",
@@ -103,12 +83,15 @@ export default function App() {
     },
   ];
 
+  const HERO_IMAGES = [
+    { src: hero1, alt: "Learn to Play hockey — photo 1" },
+    { src: hero2, alt: "Learn to Play hockey — photo 2" },
+    { src: hero3, alt: "Learn to Play hockey — photo 3" },
+    { src: hero4, alt: "Learn to Play hockey — photo 4" },
+  ];
+
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
-      {/* ✅ CHANGE: encourage early fetch */}
-      {/* NOTE: some browsers complain about `as="video"`; harmless */}
-      <link rel="preload" as="video" href={HERO_VIDEO_SRC} />
-
       {/* Header */}
       <header className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-4" />
@@ -116,7 +99,7 @@ export default function App() {
 
       {/* Hero */}
       <section className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
-        {/* ✅ CHANGE: slightly tighter padding on mobile, keep your desktop spacing */}
+        {/* ✅ slightly tighter padding on mobile, keep your desktop spacing */}
         <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 pt-10 pb-12 sm:py-12">
           <div className="grid gap-y-8 items-center lg:grid-cols-[1fr_110px_1.2fr] xl:grid-cols-[1fr_140px_1.25fr]">
             {/* LEFT: text */}
@@ -127,7 +110,7 @@ export default function App() {
                   alt="Wings Arena"
                   className="
                     mx-auto
-                    w-[260px] xs:w-[285px] sm:w-[320px] lg:w-[355.04px]
+                    w-[235px] sm:w-[300px] lg:w-[355.04px]
                     mb-0
                     mr-0 lg:mr-8
                     ml-0 lg:ml-[10px]
@@ -137,7 +120,7 @@ export default function App() {
 
                 <p
                   className="
-                    text-[#b2dbd7] font-bold tracking-wide mt-2
+                    text-[#fff] font-bold tracking-wide mt-2
                     text-center
                     mr-0 lg:mr-4
                     min-[1001px]:max-[1325px]:pl-[28px]
@@ -162,31 +145,30 @@ export default function App() {
                 "
               >
                 <p className="font-semibold text-gray-200">
-                  A welcoming intro program for beginners — balance, glides, and safe
-                  falls through fun games and guided practice.
+                  A beginner-friendly hockey program focused on building confidence
+                  through fun, guided instruction.
                 </p>
 
                 <p>
-                  Designed for kids (ages 3–8). No prior experience required — just
-                  bring a smile and we’ll take care of the rest.
+                  Players learn foundational skills through stations and games — no
+                  prior experience required.
                 </p>
 
                 <p className="text-gray-300 font-semibold">
-                  Skates &amp; helmet are required. Rental skates are available.
+                  Full gear is required. Skate & helmet rentals available.
                 </p>
 
-                {/* ✅ FIX: center the CTA on mobile, keep same on desktop */}
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={SPRING_LTS_REG_URL}
+                    href={SPRING_LTP_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
                       inline-flex items-center justify-center
                       rounded-lg
-                      px-6 py-3
+                      px-4 py-3
                       font-bold text-white
-                      bg-white/15 hover:bg-white/20
+                      bg-[#365750]/55 hover:bg-white/20
                       border border-white/30
                       transition
                       ${SHADOW}
@@ -202,7 +184,7 @@ export default function App() {
             {/* Spacer column (creates guaranteed gap on lg+) */}
             <div className="hidden lg:block" />
 
-            {/* RIGHT: Hero Video */}
+            {/* RIGHT: Hero Carousel */}
             <div
               className={`
                 relative h-64 sm:h-80 lg:h-[360px]
@@ -212,7 +194,7 @@ export default function App() {
                 rounded-lg overflow-hidden
               `}
             >
-              <VideoHero key={HERO_VIDEO_SRC} src={HERO_VIDEO_SRC} />
+              <HeroCarousel images={HERO_IMAGES} intervalMs={4500} />
             </div>
           </div>
         </div>
@@ -237,11 +219,11 @@ export default function App() {
             <div className={`w-full max-w-[760px] [&>*]:!w-full [&>*]:${SHADOW}`}>
               <InfoBox
                 iconImage={allAgesIcon}
-                title="Ages"
+                title="Ages 3-8"
                 description={
                   <>
-                    Designed for <strong>kids ages 3–8</strong>. Beginner-friendly —
-                    no prior skating experience required.
+                    Beginner-friendly program — great for kids getting started with{" "}
+                    <strong>hockey fundamentals</strong>.
                   </>
                 }
                 iconSize="w-[35.35px] h-[35.35px]"
@@ -257,9 +239,9 @@ export default function App() {
             <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[20px] gap-y-[calc(1rem*1.0356)] justify-items-stretch">
               <div className={`w-full [&>*]:!w-full [&>*]:${SHADOW}`}>
                 <InfoBox
-                  iconImage={practiceIcon}
+                  iconImage={calendarIcon}
                   title="Class Options"
-                  description="Mondays (Preschoolers), Fridays, or Saturdays"
+                  description="Mondays or Saturdays"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -272,7 +254,7 @@ export default function App() {
                 <InfoBox
                   iconImage={coachingIcon}
                   title="Coaching"
-                  description="Positive instruction with fun games and guided practice"
+                  description="Positive instruction with fun games and skill stations"
                   iconSize="w-[39px] h-[39px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -283,9 +265,9 @@ export default function App() {
 
               <div className={`w-full [&>*]:!w-full [&>*]:${SHADOW}`}>
                 <InfoBox
-                  iconImage={practiceIcon}
+                  iconImage={skatesIcon}
                   title="Required Gear"
-                  description="Skates & helmet required (rental skates available)"
+                  description="Full gear required (ask about rentals)"
                   iconSize="w-[39px] h-[39px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -312,39 +294,22 @@ export default function App() {
           </p>
 
           <div className="flex justify-center w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch gap-6 sm:gap-x-10 w-full max-w-6xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
               <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
                 <PriceCard
                   title="Mondays"
-                  price="$425"
-                  description="Preschoolers"
-                  features={["1:20 PM – 2:05 PM"]}
-                />
-              </div>
-
-              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
-                <PriceCard
-                  title="Fridays"
-                  price="$490"
+                  price="$550"
                   description="Spring Learn to Play"
-                  features={["3:15 PM – 4:00 PM"]}
+                  features={["3:40 PM – 4:40 PM"]}
                 />
               </div>
 
               <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
                 <PriceCard
                   title="Saturdays"
-                  price="$490"
+                  price="$550"
                   description="Spring Learn to Play"
-                  features={["1:20 PM – 2:05 PM"]}
-                />
-              </div>
-
-              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
-                <PriceCard
-                  title="Fridays & Saturdays"
-                  price="$735"
-                  description="2-day bundle"
+                  features={["12:20 PM – 1:20 PM"]}
                 />
               </div>
             </div>
@@ -352,10 +317,10 @@ export default function App() {
 
           <div className="text-center mt-8">
             <a
-              href={SPRING_LTS_REG_URL}
+              href={SPRING_LTP_REG_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-white/15 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
+              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-[#365750]/55 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
             >
               Register Now
             </a>
@@ -411,7 +376,7 @@ export default function App() {
                 />
 
                 <a
-                  href={SPRING_LTS_REG_URL}
+                  href={SPRING_LTP_REG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
@@ -443,7 +408,9 @@ export default function App() {
       </section>
 
       {/* FAQ */}
-      <section className={`${PAGE_BG} py-12 sm:py-12 pt-0 sm:pt-12 mt-[35px] sm:mt-0 -translate-y-[15px]`}>
+      <section
+        className={`${PAGE_BG} py-12 sm:py-12 pt-0 sm:pt-12 mt-[35px] sm:mt-0 -translate-y-[15px]`}
+      >
         <div className="max-w-[58.08rem] mx-auto px-4 sm:px-6 xl:px-8">
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 text-white text-center">
             Frequently Asked Questions
@@ -460,8 +427,8 @@ export default function App() {
                     Who is Learn to Play for?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    It’s designed for beginner skaters (kids ages 3–8) and focuses on
-                    building confidence through step-by-step instruction and fun games.
+                    Learn to Play is designed for beginners and focuses on building
+                    confidence through step-by-step coaching and fun drills.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -470,7 +437,8 @@ export default function App() {
                     What equipment is required?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Skates and a helmet are required. Rental skates are available.
+                    Full gear is required. Contact us if you have questions about
+                    rentals or what to bring.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -479,9 +447,8 @@ export default function App() {
                     When are classes?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring Learn to Play runs March 14 – June 13, 2026 with options on
-                    Mondays or Saturdays. See the Schedule section above for
-                    exact dates and times.
+                    Spring Learn to Play runs 03/14 – 06/13 with options on Mondays or
+                    Saturdays. See the Schedule section above for exact dates and times.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -490,8 +457,8 @@ export default function App() {
                     How much does it cost?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring options are $425 (Mondays - Preschool) or $490 (Fridays/Saturdays). A
-                    2-day Friday &amp; Saturday bundle is $735.
+                    Spring Learn to Play is <strong>$550</strong> for Mondays or
+                    Saturdays.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
