@@ -1,8 +1,10 @@
+import type { ReactNode } from "react";
+
 type PriceCardProps = {
   title: string;
   price: string;
   description?: string;
-  features?: string[]; // rendered as plain lines (no bullets)
+  features?: ReactNode[];
   className?: string;
 };
 

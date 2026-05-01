@@ -22,6 +22,7 @@ import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
 import qrCode from "../assets/Registration_QR.avif";
+import summerQrCode from "../assets/summer_registration_qr.png";
 
 // ✅ HERO IMAGES (add these files to your repo)
 import hero1 from "../assets/hero/hero-1.jpg";
@@ -40,8 +41,43 @@ export default function App() {
   // ✅ LINKS (from the site)
   const SPRING_LTP_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995937";
+  const SUMMER_LTP_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4038153";
 
-  // ✅ Spring 2026 schedule (from your Learn to Play screenshot)
+  // ✅ Summer 2026 schedule
+  const SUMMER_SCHEDULE = [
+    {
+      label: "Saturdays",
+      price: "$550",
+      time: "9:40 AM – 10:40 AM",
+      dates: [
+        "Jun 27, 2026",
+        "Jul 11, 2026",
+        "Jul 18, 2026",
+        "Jul 25, 2026",
+        "Aug 1, 2026",
+        "Aug 8, 2026",
+        "Aug 22, 2026",
+        "Aug 29, 2026",
+      ],
+    },
+    {
+      label: "Sundays",
+      price: "$550",
+      time: "9:40 AM – 10:40 AM",
+      dates: [
+        "Jun 28, 2026",
+        "Jul 12, 2026",
+        "Jul 19, 2026",
+        "Jul 26, 2026",
+        "Aug 2, 2026",
+        "Aug 9, 2026",
+        "Aug 23, 2026",
+        "Aug 30, 2026",
+      ],
+    },
+  ];
+
   const SPRING_SCHEDULE = [
     {
       label: "Mondays",
@@ -126,7 +162,7 @@ export default function App() {
                     min-[1001px]:max-[1325px]:pl-[28px]
                   "
                 >
-                  March 14th - June 13th
+                  June 27th - August 30th
                 </p>
 
                 <div className="mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
@@ -160,7 +196,7 @@ export default function App() {
 
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={SPRING_LTP_REG_URL}
+                    href={SUMMER_LTP_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
@@ -172,10 +208,10 @@ export default function App() {
                       border border-white/30
                       transition
                       ${SHADOW}
-                      w-full max-w-[320px] sm:w-auto
+                      w-full max-w-[380px] sm:w-auto sm:min-w-[340px]
                     `}
                   >
-                    Register for Spring Learn to Play
+                    Register for Summer Learn to Play
                   </a>
                 </div>
               </div>
@@ -219,7 +255,7 @@ export default function App() {
             <div className={`w-full max-w-[760px] [&>*]:!w-full [&>*]:${SHADOW}`}>
               <InfoBox
                 iconImage={allAgesIcon}
-                title="Ages 3-8"
+                title="Ages 3-10"
                 description={
                   <>
                     Beginner-friendly program — great for kids getting started with{" "}
@@ -241,7 +277,7 @@ export default function App() {
                 <InfoBox
                   iconImage={calendarIcon}
                   title="Class Options"
-                  description="Mondays or Saturdays"
+                  description="Saturdays or Sundays"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -267,7 +303,7 @@ export default function App() {
                 <InfoBox
                   iconImage={skatesIcon}
                   title="Required Gear"
-                  description="Full gear required (ask about rentals)"
+                  description="Full gear required (ask about skate rentals)"
                   iconSize="w-[39px] h-[39px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -290,11 +326,167 @@ export default function App() {
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
           <p className="text-center text-gray-200 mb-6 font-semibold">
+            Learn To Play Summer 2026
+          </p>
+
+          <div className="flex justify-center w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 items-stretch gap-6 sm:gap-x-10 w-full max-w-5xl">
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="One Day"
+                  price="$350"
+                  description="Summer Learn to Play"
+                  features={[<>Saturdays <strong>OR</strong> Sundays</>, "9:40 AM – 10:40 AM"]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Both Days"
+                  price="$525"
+                  description="Summer Learn to Play"
+                  features={[<>Saturdays <strong>AND</strong> Sundays</>, "9:40 AM – 10:40 AM"]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Drop-in"
+                  price="$50"
+                  description="Per session"
+                  features={["No commitment required", "Pay as you go"]}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href={SUMMER_LTP_REG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-[#365750]/55 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
+            >
+              Register Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule */}
+      <section className={`${PAGE_BG} pt-2 pb-0`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Summer '26 Schedule
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+        </div>
+      </section>
+
+      <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
+        <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
+          <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+          <div className="relative z-10">
+            <ScheduleTable items={SUMMER_SCHEDULE} />
+            <div className="mt-6 text-center" />
+          </div>
+        </div>
+      </div>
+
+      {/* Registration / Contact */}
+      <section className={`${PAGE_BG} py-8 pb-10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Summer 2026 Registration
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <div className="w-[90%] sm:w-full max-w-3xl mx-auto my-8">
+            <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 text-center ${SHADOW}`}>
+              <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+              <div className="relative z-10">
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
+                  Register Today!
+                </h3>
+
+                <p className="text-white leading-relaxed">
+                  Use the QR code or click the link below to register for Summer Learn
+                  to Play.
+                </p>
+
+                <img
+                  src={summerQrCode}
+                  alt="Summer Registration QR Code"
+                  className="mx-auto mt-5 w-[120px] sm:w-[160px] h-auto rounded-md bg-white p-2"
+                />
+
+                <a
+                  href={SUMMER_LTP_REG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
+                >
+                  Click Here to Register
+                </a>
+
+                <div className="my-6 h-px w-full bg-white/25" />
+
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-3">
+                  Questions?
+                </h3>
+
+                <p className="text-white">
+                  Email: <a href="mailto:jwanderlingh@wingsarena.com" className="font-semibold underline underline-offset-2 hover:text-[#b2dbd7] transition">jwanderlingh@wingsarena.com</a>
+                </p>
+
+                <div className="mt-4 text-white space-y-1">
+                  <p className="font-semibold text-white">Wings Arena</p>
+                  <p>5 Barry Place • Stamford, CT 06902</p>
+                  <p>(203) 357-1055</p>
+                </div>
+
+                <div className="mt-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Spring 2026 divider */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 pt-6 pb-2">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+      </div>
+
+      {/* Spring 2026 header banner */}
+      <section className={`${PAGE_BG} pt-10 pb-0`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 text-center">
+          <h2 className="text-[1.9rem] sm:text-[2.5rem] font-bold text-white">
+            Spring 2026 Learn to Play
+          </h2>
+          <p className="mt-3 inline-block rounded-full bg-[#b2dbd7]/20 border border-[#b2dbd7]/50 px-5 py-2 text-[#b2dbd7] font-semibold tracking-wide text-sm sm:text-base">
+            Spring Registration is Still Open!
+          </p>
+          <p className="mt-6 text-white font-bold tracking-wide">
+            March 16th – June 13th
+          </p>
+        </div>
+      </section>
+
+      {/* Spring Pricing */}
+      <section className={`${PAGE_BG} py-10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.7rem] sm:text-[2.15625rem] mb-2 text-white text-center">
+            Pricing Options
+          </h2>
+
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <p className="text-center text-gray-200 mb-6 font-semibold">
             Learn To Play Spring 2026
           </p>
 
           <div className="flex justify-center w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
+            <div className="grid grid-cols-1 sm:grid-cols-2 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
               <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
                 <PriceCard
                   title="Mondays"
@@ -328,7 +520,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Schedule */}
+      {/* Spring Schedule */}
       <section className={`${PAGE_BG} pt-2 pb-0`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
@@ -348,11 +540,11 @@ export default function App() {
         </div>
       </div>
 
-      {/* Registration / Contact */}
+      {/* Spring Registration */}
       <section className={`${PAGE_BG} py-8 pb-10`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
-            Registration
+            Spring 2026 Registration
           </h2>
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
@@ -361,7 +553,7 @@ export default function App() {
               <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
               <div className="relative z-10">
                 <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
-                  Register Today!
+                  Register for Spring 2026!
                 </h3>
 
                 <p className="text-white leading-relaxed">
@@ -391,7 +583,7 @@ export default function App() {
                 </h3>
 
                 <p className="text-white">
-                  Email: <span className="font-semibold">info@wingsarena.com</span>
+                  Email: <a href="mailto:jwanderlingh@wingsarena.com" className="font-semibold underline underline-offset-2 hover:text-[#b2dbd7] transition">jwanderlingh@wingsarena.com</a>
                 </p>
 
                 <div className="mt-4 text-white space-y-1">
@@ -447,8 +639,8 @@ export default function App() {
                     When are classes?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring Learn to Play runs 03/14 – 06/13 with options on Mondays or
-                    Saturdays. See the Schedule section above for exact dates and times.
+                    Summer Learn to Play runs 06/27 – 08/30 with options on Saturdays or
+                    Sundays. See the Schedule section above for exact dates and times.
                   </AccordionContent>
                 </AccordionItem>
 
@@ -457,8 +649,8 @@ export default function App() {
                     How much does it cost?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring Learn to Play is <strong>$550</strong> for Mondays or
-                    Saturdays.
+                    Summer Learn to Play is <strong>$350</strong> for one day (Saturdays or Sundays),{" "}
+                    <strong>$525</strong> for both days, or <strong>$50</strong> per session as a drop-in.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
