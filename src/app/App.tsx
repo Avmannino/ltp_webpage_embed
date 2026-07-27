@@ -192,7 +192,7 @@ export default function App() {
 
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={SUMMER_LTP_REG_URL}
+                    href={FALL_LTP_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
@@ -207,7 +207,7 @@ export default function App() {
                       w-full max-w-[380px] sm:w-auto sm:min-w-[340px]
                     `}
                   >
-                    Register for Summer Learn to Play
+                    Register for Fall Learn to Play
                   </a>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function App() {
                 <InfoBox
                   iconImage={calendarIcon}
                   title="Class Options"
-                  description="Saturdays or Sundays"
+                  description="Tuesdays or Fridays"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
