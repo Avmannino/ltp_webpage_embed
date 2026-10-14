@@ -22,6 +22,7 @@ import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
 import fallQrCode from "../assets/fall_registration_qr.png";
+import winterQrCode from "../assets/winter-qr-code.png";
 
 // ✅ HERO IMAGES (add these files to your repo)
 import hero1 from "../assets/hero/hero-1.jpg";
@@ -35,11 +36,36 @@ export default function App() {
 
   // ✅ Colors (kept from your design)
   const PAGE_BG = "bg-[#013763]";
+  const WINTER_BG = "bg-[#3d1f6b]";
   const CARD_OVERLAY = "bg-[#365750]/85";
 
   // ✅ LINKS (from the site)
+  const WINTER_LTP_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4129082";
   const FALL_LTP_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4084756#SelectRegistrationType";
+
+  const WINTER_SCHEDULE = [
+    {
+      label: "Sundays",
+      price: "$595",
+      time: "1:30 PM – 2:30 PM",
+      dates: [
+        "Dec 6, 2026",
+        "Dec 13, 2026",
+        "Dec 20, 2026",
+        "Dec 27, 2026",
+        "Jan 3, 2027",
+        "Jan 10, 2027",
+        "Jan 17, 2027",
+        "Jan 24, 2027",
+        "Jan 31, 2027",
+        "Feb 7, 2027",
+        "Feb 14, 2027",
+        "Feb 21, 2027",
+      ],
+    },
+  ];
 
   const FALL_SCHEDULE = [
     {
@@ -113,16 +139,6 @@ export default function App() {
                   "
                 />
 
-                <p
-                  className="
-                    text-[#fff] font-bold tracking-wide mt-2
-                    text-center
-                    mr-0 lg:mr-4
-                    min-[1001px]:max-[1325px]:pl-[28px]
-                  "
-                >
-                  June 27th - August 30th
-                </p>
 
                 <div className="mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
               </div>
@@ -150,10 +166,29 @@ export default function App() {
                 </p>
 
                 <p className="text-gray-300 font-semibold">
-                  Full gear is required. Skate & helmet rentals available.
+                  Full gear is required. Skate rentals available.
                 </p>
 
-                <div className="pt-2 flex justify-center">
+                <div className="pt-2 flex flex-col items-center gap-3">
+                  <a
+                    href={WINTER_LTP_REG_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`
+                      inline-flex items-center justify-center
+                      rounded-lg
+                      px-4 py-3
+                      font-bold text-white
+                      bg-[#3d1f6b]/80 hover:bg-white/20
+                      border border-white/30
+                      transition
+                      ${SHADOW}
+                      w-full max-w-[380px] sm:w-auto sm:min-w-[340px]
+                    `}
+                  >
+                    Register for Winter Learn to Play
+                  </a>
+
                   <a
                     href={FALL_LTP_REG_URL}
                     target="_blank"
@@ -236,7 +271,7 @@ export default function App() {
                 <InfoBox
                   iconImage={calendarIcon}
                   title="Class Options"
-                  description="Tuesdays or Fridays"
+                  description="Tuesdays or Fridays (Fall) | Sundays (Winter)"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -274,6 +309,153 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Winter 2026–27 header banner */}
+      <section className={`${WINTER_BG} pt-10 pb-0`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 text-center">
+          <h2 className="text-[1.9rem] sm:text-[2.5rem] font-bold text-white">
+            Winter 2026–27 Learn to Play
+          </h2>
+          <p className="mt-6 text-white font-bold tracking-wide">
+            Sundays starting December 6th
+          </p>
+          <p className="mt-2 text-gray-200 font-semibold">
+            1:30 PM – 2:30 PM
+          </p>
+        </div>
+      </section>
+
+      {/* Winter Pricing */}
+      <section className={`${WINTER_BG} py-10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.7rem] sm:text-[2.15625rem] mb-2 text-white text-center">
+            Pricing Options
+          </h2>
+
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <p className="text-center text-gray-200 mb-6 font-semibold">
+            Learn To Play Winter 2026–27
+          </p>
+
+          <div className="flex justify-center w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 items-stretch gap-6 sm:gap-x-10 w-full max-w-3xl">
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Full Session"
+                  price="$595"
+                  description="12 classes"
+                  features={["Sundays", "1:30 PM – 2:30 PM"]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Drop-in"
+                  price="$60"
+                  description="Per session"
+                  features={["No commitment required", "Pay as you go"]}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href={WINTER_LTP_REG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-[#365750]/55 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
+            >
+              Register Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Winter Schedule */}
+      <section className={`${WINTER_BG} pt-2 pb-8`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Winter '26–27 Schedule
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+        </div>
+
+        <div className="w-[92%] sm:w-full max-w-6xl mx-auto mt-2">
+          <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
+            <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+            <div className="relative z-10">
+              <ScheduleTable items={WINTER_SCHEDULE} />
+              <div className="mt-6 text-center" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Winter Registration */}
+      <section className={`${WINTER_BG} py-8 pb-10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Winter 2026–27 Registration
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <div className="w-[90%] sm:w-full max-w-3xl mx-auto my-8">
+            <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 text-center ${SHADOW}`}>
+              <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+              <div className="relative z-10">
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
+                  Register Today!
+                </h3>
+
+                <p className="text-white leading-relaxed">
+                  Use the QR code or click the link below to register for Winter Learn
+                  to Play.
+                </p>
+
+                <img
+                  src={winterQrCode}
+                  alt="Winter Registration QR Code"
+                  className="mx-auto mt-5 w-[120px] sm:w-[160px] h-auto rounded-md bg-white p-2"
+                />
+
+                <a
+                  href={WINTER_LTP_REG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
+                >
+                  Click Here to Register
+                </a>
+
+                <div className="my-6 h-px w-full bg-white/25" />
+
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-3">
+                  Questions?
+                </h3>
+
+                <p className="text-white">
+                  Email: <a href="mailto:jwanderlingh@wingsarena.com" className="font-semibold underline underline-offset-2 hover:text-[#b2dbd7] transition">jwanderlingh@wingsarena.com</a>
+                </p>
+
+                <div className="mt-4 text-white space-y-1">
+                  <p className="font-semibold text-white">Wings Arena</p>
+                  <p>5 Barry Place • Stamford, CT 06902</p>
+                  <p>(203) 357-1055</p>
+                </div>
+
+                <div className="mt-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fall 2026 divider */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 pt-6 pb-2">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+      </div>
 
       {/* Fall 2026 header banner */}
       <section className={`${PAGE_BG} pt-10 pb-0`}>
@@ -462,9 +644,16 @@ export default function App() {
                   <AccordionTrigger className="text-white">
                     When are classes?
                   </AccordionTrigger>
-                  <AccordionContent className="text-white">
-                    Fall Learn to Play runs 09/08 – 11/13 with options on Tuesdays or
-                    Fridays. See the Schedule section above for exact dates and times.
+                  <AccordionContent className="text-white space-y-2">
+                    <p>
+                      Winter Learn to Play runs on Sundays from 1:30 PM – 2:30 PM,
+                      starting 12/06.
+                    </p>
+                    <p>
+                      Fall Learn to Play runs 09/08 – 11/13 with options on Tuesdays or
+                      Fridays.
+                    </p>
+                    <p>See the Schedule sections above for exact dates and times.</p>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -472,9 +661,15 @@ export default function App() {
                   <AccordionTrigger className="text-white">
                     How much does it cost?
                   </AccordionTrigger>
-                  <AccordionContent className="text-white">
-                    Fall Learn to Play is <strong>$495</strong> for one day (Tuesdays or Fridays),{" "}
-                    <strong>$740</strong> for both days, or <strong>$55</strong> per session as a drop-in.
+                  <AccordionContent className="text-white space-y-2">
+                    <p>
+                      Winter Learn to Play is <strong>$595</strong> for 12 classes, or{" "}
+                      <strong>$60</strong> per session as a drop-in.
+                    </p>
+                    <p>
+                      Fall Learn to Play is <strong>$495</strong> for one day (Tuesdays or Fridays),{" "}
+                      <strong>$740</strong> for both days, or <strong>$55</strong> per session as a drop-in.
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
